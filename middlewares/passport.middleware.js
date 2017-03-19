@@ -14,11 +14,11 @@ const jwtOptions = {
 };
 
 const strategy = new JwtStrategy(jwtOptions, (jwt_payload, next) => {
-	console.log('payload received', jwt_payload);
+	//console.log('payload received', jwt_payload);
 	const user = User.find({ id: jwt_payload.id }, (err, user) => {
 		if(user) next(null, user);
 		else next(null, false);
 	});
-});
+});   
 
 passport.use(strategy);

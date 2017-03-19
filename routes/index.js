@@ -1,6 +1,7 @@
 const express = require('express');
 const path = require('path');
 const router = express.Router();
+const passport = require('passport');
 const jwt = require('jsonwebtoken');
 const config = require('../config/config');
 
@@ -37,8 +38,8 @@ router.post('/register', (req, res, next) => {
 
 router.get('/hello', (req, res, next) => res.send({ msg: 'Hello, ExpressJS! '}));
 
-router.get('/games', (req, res, next) => {
-	Game.find({}, (err, games) => res.send(games));
+router.get('/games', passport.authenticate('jwt', { session: false }), (req, res, next) => {
+	Game.find({}, (err, games) => res.json(games));
 });
 
 module.exports = router;

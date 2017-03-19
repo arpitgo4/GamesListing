@@ -6,6 +6,7 @@ const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const cluster = require('cluster');
 const passport = require('passport');
+require('./middlewares/passport.middleware');
 
 if(cluster.isMaster)   
 	require('./config/LoadMongo');  
