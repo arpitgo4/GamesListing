@@ -10,7 +10,7 @@ export default class GameRow extends React.Component {
 		return(
 			<tbody>
 				<tr className="text-center">
-				<td>{this.props.value.title}</td>
+				<td style={{ width: 450 }}>{this.props.value.title}</td>
 					<td>{this.props.value.platform}</td>
 					<td>{this.props.value.score}</td>
 					<td>{this.props.value.genre}</td>

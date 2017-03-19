@@ -22,7 +22,7 @@ export default class UserProfile extends React.Component {
 						</div>
 					</li>
 					<li className="divider"></li>
-					<li id="profile"><Link to="">Profile</Link></li>
+					
 					<li id="logout" onClick={this.logout.bind(this)}><Link to="">Log Out</Link></li>
 				</ul>
 			</div>
@@ -36,6 +36,8 @@ export default class UserProfile extends React.Component {
 		browserHistory.push('/');
 	}
 }
+
+//<li id="profile"><Link to="">Profile</Link></li>
 
 UserProfile.contextTypes = {
 	store: React.PropTypes.object

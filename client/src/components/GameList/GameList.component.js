@@ -38,7 +38,7 @@ export default class GameList extends React.Component {
 						<thead>
 							<th className="text-center">Title</th>
 							<th className="text-center">Platform</th>
-							<th onClick={this.sortlist.bind(this)} className="text-center">Score<img id="sort-icon" src={this.state.sortIcon} className="glyphicon" /></th>
+							<th onClick={this.sortlist.bind(this)} className="text-center btn"><b>Score</b><img id="sort-icon" src={this.state.sortIcon} className="glyphicon" /></th>
 							<th className="text-center">Genre</th>
 							<th className="text-center">Editor's Choice</th>
 						</thead>
@@ -53,18 +53,27 @@ export default class GameList extends React.Component {
 		);
 	}
 
-	sortlist(){
+	sortlist(e){
 		let icon = this.state.sortIcon;
+		let games = this.state.games;
+		let page = (this.page === 0 || !this.page) ? 1 : this.page;
+
+		let games_on_page = [];
 		switch(icon){
 			case SortUp: icon = SortDown;
+						games = games.sort((a, b) => (parseFloat(a.score) - parseFloat(b.score)) >= 0);  // ascending
 						break;
 			case SortDown: icon = SortUp;
+						games = games.sort((a, b) => (parseFloat(a.score) - parseFloat(b.score)) < 0);	// descending						
 						break;
 		}
-		this.setState(Object.assign(this.state, { sortIcon: icon }), () => console.log('icon changed!!'));
+		games_on_page = games.slice((page - 1)  * this.NUMBER_OF_GAMES_ON_PAGE, page * this.NUMBER_OF_GAMES_ON_PAGE)
+		console.log(games_on_page);
+		this.setState({ sortIcon: icon, games, games_on_page });
 	}
 
 	pageClick(page){
+		this.page = page;
 		const prevGames = this.state.games;
 		this.setState({ games: prevGames, 
 						games_on_page: prevGames.slice((page - 1) * this.NUMBER_OF_GAMES_ON_PAGE, page * this.NUMBER_OF_GAMES_ON_PAGE)
