@@ -67,3 +67,17 @@ tr:hover {
 .table {
 	border: 2px solid grey;
 }
+
+thead {
+	background-color: #84BB41;
+}
+
+/* Pagination CSS */
+
+/*#pagination:hover {
+	background-color: #84BB41;
+}
+
+.page-link:active {
+	background-color: #84BB41;	
+}*/

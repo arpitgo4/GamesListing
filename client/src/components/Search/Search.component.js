@@ -13,7 +13,7 @@ export default class Search extends React.Component {
 						</input>
 					</div>
 					<div style={{ marginTop: 10 }} className="col-md-6 col-md-offset-3">
-						<button onClick={this.search.bind(this)} className="btn btn-primary pull-right">Seach</button>
+						<button onClick={this.search.bind(this)} style={{ backgroundColor: '#84BB41' }} className="btn btn-primary pull-right">Seach</button>
 					</div>
 					<div className="col"></div>
 				</div>

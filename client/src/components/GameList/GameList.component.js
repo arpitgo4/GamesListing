@@ -39,7 +39,7 @@ export default class GameList extends React.Component {
 						)}
 					</table>
 					<Pagination handleClick={this.pageClick.bind(this)}
-						value={this.state.games.slice(0, this.state.games.length / this.NUMBER_OF_GAMES_ON_PAGE)} />
+						value={this.state.games.slice(0, (this.state.games.length + 1) / this.NUMBER_OF_GAMES_ON_PAGE)} />
 				</div>
 			</div>
 		);
