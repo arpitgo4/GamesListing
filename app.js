@@ -9,12 +9,19 @@ const index = require('./routes/index');
 
 const app = express();
 
+const allowCrossDomains = (req, res, next) => {
+	res.header('ACCESS-CONTROL-ALLOW_ORIGIN', '*');
+	res.header('ACCESS-CONTROL-ALLOW-METHODS', 'GET,POST,PUT');
+	res.header('ACCESS-CONTORL-ALLOW-HEADERS', 'Origin,X-Requested-With,Content-Type,Accept');
+};
+
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(allowCrossDomains);
 app.use(express.static(path.join(__dirname, 'dist')));
 
 app.use('/api', index);
