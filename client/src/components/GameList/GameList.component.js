@@ -14,9 +14,11 @@ export default class GameList extends React.Component {
 	componentWillMount(){
 		const store = this.context.store;
 		store.subscribe(() => {
-			const games = store.getState().game_list;
-			if(games != null)
+			let games = store.getState().game_list;
+			if(games != null){
+				games = games.sort((a, b) => a.score - b.score);
 				this.setState({ games, games_on_page: games.slice(0, this.NUMBER_OF_GAMES_ON_PAGE) });
+			}
 		});
 		
 	}

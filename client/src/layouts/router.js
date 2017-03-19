@@ -13,6 +13,7 @@ const router = (
 			<IndexRoute component={Login} />
 			<Route path="register" component={Register} />
 			<Route path="/game-listing" component={GameLayout} />
+			<Route path="*" component={Login} />
 		</Route>
 	</Router>
 )

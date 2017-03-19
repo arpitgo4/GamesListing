@@ -36,7 +36,7 @@ export default class Register extends React.Component {
 						    		    <input className="form-control" ref="password" placeholder="Password" type="password" />
 						    		</div>				    	
 						    		<div className="form-group">						    		
-						    			<input className="btn btn-lg btn-success btn-block" onClick={this.register.bind(this)} type="button" value="Register" />
+						    			<input className="btn btn-lg btn-block" style={{ backgroundColor: '#84BB41' }}  onClick={this.register.bind(this)} type="button" value="Register" />
 						    		</div>		
 						    		<p className="text-center text-danger">{this.state.msg}</p>				    		
 						    	</fieldset>					

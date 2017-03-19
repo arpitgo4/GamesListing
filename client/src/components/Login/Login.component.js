@@ -33,7 +33,7 @@ export default class Login extends React.Component {
 						    		    <input className="form-control" ref="password" placeholder="Password" type="password" />
 						    		</div>						    						    
 						    		<div className="form-group">						    		
-						    			<input className="btn btn-lg btn-success btn-block" onClick={this.login.bind(this)} type="button" value="Login" />
+						    			<input className="btn btn-lg btn-block" style={{ backgroundColor: '#84BB41'}} onClick={this.login.bind(this)} type="button" value="Login" />
 						    		</div>
 						    		<Link id="register-link" className="pull-right" to="/register">Register</Link>
 						    		<p className="text-center text-danger">{this.state.msg}</p>						    		
