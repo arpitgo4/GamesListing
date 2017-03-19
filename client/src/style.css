@@ -1,0 +1,26 @@
+/* header css */
+#header {
+	background-color: white;
+}
+
+#header-row {
+	margin-top: 20px;
+}
+
+#user-logo {
+	width: 50px;
+	height: 50px;
+}
+
+#user-popup-logo {
+	width: 40px;
+	height: 40px;
+	margin-top: 2px;
+}
+#user-logo:hover, #profile:hover, #logout:hover {
+	cursor: pointer;
+}
+
+#logo {
+
+}
