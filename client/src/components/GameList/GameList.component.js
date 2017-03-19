@@ -3,12 +3,15 @@ import React from 'react';
 import GameRow from '../GameRow/GameRow.component';
 import Pagination from '../Pagination/Pagination.component';
 
+import SortUp from '../../assets/images/sort_up.png';
+import SortDown from '../../assets/images/sort_down.png';
+
 export default class GameList extends React.Component {
 
 	constructor(props){
 		super(props);
 		this.NUMBER_OF_GAMES_ON_PAGE = 20;
-		this.state = { games: [], games_on_page: [] }; 
+		this.state = { games: [], games_on_page: [], search_param: this.props.search_param, sortIcon: SortUp }; 
 	}
 
 	componentWillMount(){
@@ -16,11 +19,14 @@ export default class GameList extends React.Component {
 		store.subscribe(() => {
 			let games = store.getState().game_list;
 			if(games != null){
-				games = games.sort((a, b) => a.score - b.score);
+				console.log('search_param', this.state.search_param);
+				if(this.state.search_param !== '' && this.state.search_param){
+					console.log('filtering list.....');
+					games = games.filter(game => game.title.contains(this.state.search_param));
+				}
 				this.setState({ games, games_on_page: games.slice(0, this.NUMBER_OF_GAMES_ON_PAGE) });
 			}
 		});
-		
 	}
 
 	render(){
@@ -32,7 +38,7 @@ export default class GameList extends React.Component {
 						<thead>
 							<th className="text-center">Title</th>
 							<th className="text-center">Platform</th>
-							<th className="text-center">Score</th>
+							<th onClick={this.sortlist.bind(this)} className="text-center">Score<img id="sort-icon" src={this.state.sortIcon} className="glyphicon" /></th>
 							<th className="text-center">Genre</th>
 							<th className="text-center">Editor's Choice</th>
 						</thead>
@@ -45,6 +51,17 @@ export default class GameList extends React.Component {
 				</div>
 			</div>
 		);
+	}
+
+	sortlist(){
+		let icon = this.state.sortIcon;
+		switch(icon){
+			case SortUp: icon = SortDown;
+						break;
+			case SortDown: icon = SortUp;
+						break;
+		}
+		this.setState(Object.assign(this.state, { sortIcon: icon }), () => console.log('icon changed!!'));
 	}
 
 	pageClick(page){

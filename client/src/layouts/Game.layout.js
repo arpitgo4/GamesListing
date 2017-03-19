@@ -8,6 +8,11 @@ import GameList from '../components/GameList/GameList.component';
 
 export default class Game extends React.Component {
 
+	constructor(props){
+		super(props);
+		this.state = { search_param: '' };
+	}
+
 	componentWillMount(){
 		const store = this.context.store;
 		console.log(store.getState());
@@ -30,10 +35,15 @@ export default class Game extends React.Component {
 	render() {
 		return (
 			<div>
-				<Search />
-				<GameList />
+				<Search onClick={this.handleClick.bind(this)} />
+				<GameList search={this.state.search_param} />
 			</div>
 		);
+	}
+
+	handleClick(search_param){
+		console.log('Searching for ....', search_param);
+		this.setState({ search_param });
 	}
 }
 

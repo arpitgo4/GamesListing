@@ -68,6 +68,15 @@ tr:hover {
 	border: 2px solid grey;
 }
 
+#sort-icon {
+	width: 20px;
+	height: 20px;
+	padding-bottom: 1px;
+}
+#sort-icon {
+	cursor: pointer;
+}
+
 thead {
 	background-color: #84BB41;
 }
