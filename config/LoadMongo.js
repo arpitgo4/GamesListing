@@ -19,10 +19,18 @@ const convertToModels = (data) => {
 	const lines = splittedLines.slice(1, splittedLines.length);
 
 	const games = lines.map(line => {
-		const [ title, platform, score, genre, editors_choice ] = line
-																		.replace(new RegExp(`"`, 'g'), '')
-																		.split(',');
-		return new Game({ title, platform, score, genre, editors_choice });	
+		const arr = line
+					.replace(new RegExp(`"`, 'g'), '')
+					.split(',');
+		if(arr.length > 5){
+			const [ title, platform, score, genre, genre_2, editors_choice ] = arr;
+			return new Game({ title, platform, score, genre: `${genre}  ${genre_2}`, editors_choice });			
+		}
+		else {				
+			const [ title, platform, score, genre, editors_choice ] = arr;
+			return new Game({ title, platform, score, genre, editors_choice });	
+		}
+		
 	});
 	
 	return games;
