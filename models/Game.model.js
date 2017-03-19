@@ -1,4 +1,4 @@
-const config = require('../config/config');
+
 const mongoose = require('mongoose');
 
 const GameScehma = new mongoose.Schema({
