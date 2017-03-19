@@ -1,9 +1,19 @@
 import React from 'react';
 import { Link } from 'react-router';
 
+import Actions from '../../reducers/actions';
+
 import superagent from 'superagent';
 
 export default class Login extends React.Component {
+
+	constructor(props){
+		super(props);
+		this.state = {
+			msg: ''
+		};
+	}
+
 	render(){
 		return (
 			<div id="login-form-container" className="container">
@@ -25,7 +35,8 @@ export default class Login extends React.Component {
 						    		<div className="form-group">						    		
 						    			<input className="btn btn-lg btn-success btn-block" onClick={this.login.bind(this)} type="button" value="Login" />
 						    		</div>
-						    		<Link id="register-link" className="pull-right" to="/register">Register</Link>						    		
+						    		<Link id="register-link" className="pull-right" to="/register">Register</Link>
+						    		<p className="text-center text-danger">{this.state.msg}</p>						    		
 						    	</fieldset>					
 						      	</form>
 						    </div>
@@ -38,14 +49,23 @@ export default class Login extends React.Component {
 
 	login(){
 		const { username, password } = this.refs;
-		console.log(this.refs.username.value, this.refs.password.value);
 		superagent
 			.post('/api/login')
 			.send({ username: username.value, password: password.value })
-			.end((err, res) => {
-				console.log(res.body);
-				const token = res.body.token;
-				localStorage.setItem('jwt', token);
+			.end((err, res) => {			
+				const { token, user, msg } = res.body;				
+
+				if(user) {
+					this.setState({ msg });
+					const store = this.context.store;
+					user.jwt = token;
+					store.dispatch({ type: Actions.PUT_USER, payload: user });
+				}
+				else this.setState({ msg });			
 			});
 	}
 }
+
+Login.contextTypes = {
+	store: React.PropTypes.object
+};
