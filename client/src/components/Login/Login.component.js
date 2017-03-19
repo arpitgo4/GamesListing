@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router';
 
+import superagent from 'superagent';
+
 export default class Login extends React.Component {
 	render(){
 		return (
@@ -15,13 +17,13 @@ export default class Login extends React.Component {
 						    	<form accept-charset="UTF-8" role="form">
 			                    <fieldset>
 						    	  	<div className="form-group">
-						    		    <input className="form-control" placeholder="Username" name="email" type="text" />
+						    		    <input className="form-control" ref="username" placeholder="Username" type="text" />
 						    		</div>
 						    		<div className="form-group">
-						    			<input className="form-control" placeholder="Password" name="password" type="password" value="" />
-						    		</div>				    	
+						    		    <input className="form-control" ref="password" placeholder="Password" type="password" />
+						    		</div>						    						    
 						    		<div className="form-group">						    		
-						    			<input className="btn btn-lg btn-success btn-block" type="button" value="Login" />
+						    			<input className="btn btn-lg btn-success btn-block" onClick={this.login.bind(this)} type="button" value="Login" />
 						    		</div>
 						    		<Link id="register-link" className="pull-right" to="/register">Register</Link>						    		
 						    	</fieldset>					
@@ -32,5 +34,18 @@ export default class Login extends React.Component {
 				</div>
 			</div>
 		);
+	}
+
+	login(){
+		const { username, password } = this.refs;
+		console.log(this.refs.username.value, this.refs.password.value);
+		superagent
+			.post('/api/login')
+			.send({ username: username.value, password: password.value })
+			.end((err, res) => {
+				console.log(res.body);
+				const token = res.body.token;
+				localStorage.setItem('jwt', token);
+			});
 	}
 }

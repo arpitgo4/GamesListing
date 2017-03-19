@@ -48,15 +48,17 @@ readData((fileData) => {
 });
 
 User.count({}, (err, count) => {
-	if(count === 0){
-		// adds Admin user, { firstname: 'Administrator', lastname: '', username: 'admin', password: 'admin'}
-		new User({
-			firstname: 'administrator',
-			lastname: '',
-			username: 'admin',
-			password: 'admin'
-		}).save((err) => { 
-			if(!err) console.log('Admin user created!!')
-		});
-	}
+	User.find({username: 'admin', password: 'admin'}, (err, user) => {
+		if(user.length === 0){
+			// adds Admin user, { firstname: 'Administrator', lastname: '', username: 'admin', password: 'admin'}
+			new User({
+				firstname: 'administrator',
+				lastname: '',
+				username: 'admin',
+				password: 'admin'
+			}).save((err) => { 
+				if(!err) console.log('Admin user created!!')
+			});
+		}
+	});
 });

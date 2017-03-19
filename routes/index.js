@@ -11,8 +11,10 @@ const User = require('../models').USER;
 router.post('/login', (req, res, next) => {
 	const { username, password } = req.body;
 	User.find({ username, password }, (err, user) => {
-		if(!user){
+		console.log(user);
+		if(user.length === 0){
 			res.send({ msg: 'Username/Password may be incorrect!', token: null, user: null });
+			return;
 		}
 		const payload = { id: user.id };
 		const token = jwt.sign(payload, config.JWT_SECRET_KEY);
@@ -29,6 +31,7 @@ router.post('/register', (req, res, next) => {
 			new User({ firstname, lastname, username, password }).save((err) => {
 				if(err){
 					res.send({ msg: 'Error occured during registration!!' });
+					return;
 				}
 				res.send({ msg: 'Registration successfull!', user: { firstname, lastname, username, password } });
 			});
