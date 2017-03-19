@@ -48,7 +48,6 @@ readData((fileData) => {
 });
 
 User.count({}, (err, count) => {
-	console.log('user count: ', count);
 	if(count === 0){
 		// adds Admin user, { firstname: 'Administrator', lastname: '', username: 'admin', password: 'admin'}
 		new User({
