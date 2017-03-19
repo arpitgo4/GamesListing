@@ -47,6 +47,14 @@ div#login-form-container {
 	bottom: 50%;
 }
 
+
+/* Register form CSS */
+#register-form-container {
+	position: absolute;
+	top: 25%;
+	bottom: 50%;
+}
+
 #register-link:hover {
 	cursor: pointer;
 }

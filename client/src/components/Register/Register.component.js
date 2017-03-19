@@ -5,7 +5,7 @@ export default class Register extends React.Component {
 
 	render() {
 		return (
-			<div id="login-form-container" className="container">
+			<div id="register-form-container" className="container">
 			    <div className="row">
 					<div className="col-md-5 col-md-offset-4">
 			    		<div className="panel panel-default">
