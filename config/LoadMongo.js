@@ -1,5 +1,6 @@
 const fs = require('fs');
 const Game = require('../models').GAME;
+const User = require('../models').USER;
 
 const readData = (callback) => {
 	fs.readFile(`${__dirname}/games_listing.csv`, (err, data) => {
@@ -39,10 +40,24 @@ const insertGames = (games) => {
 	games.forEach(game => game.save());
 }
 
+// reads csv file and inserts data into mongoDB.
 readData((fileData) => {
 	const games = convertToModels(fileData);
 	removeAllGames();
 	insertGames(games);
 });
 
-
+User.count({}, (err, count) => {
+	console.log('user count: ', count);
+	if(count === 0){
+		// adds Admin user, { firstname: 'Administrator', lastname: '', username: 'admin', password: 'admin'}
+		new User({
+			firstname: 'administrator',
+			lastname: '',
+			username: 'admin',
+			password: 'admin'
+		}).save((err) => { 
+			if(!err) console.log('Admin user created!!')
+		});
+	}
+});
