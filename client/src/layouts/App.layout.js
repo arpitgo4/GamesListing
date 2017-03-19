@@ -15,7 +15,6 @@ export default class AppLayout extends React.Component {
                 <div id="app-container" className="container-fluid">
                     <Header />        
                 	{this.props.children}
-                	<Footer />
                 </div>
             </Provider>
 		);

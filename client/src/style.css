@@ -30,8 +30,23 @@
 #footer-row {
 	background-color: #282A2B;
 	height: 70px;
+	width: 101%;
 }
-#footer-row-p {
-	color: #808181;
-	margin-top: 20px;
+
+.footer {
+	position: fixed;
+	top: 100%;
+	left: 0px;
+	right: 0px;
+}
+
+/* Login form CSS */
+div#login-form-container {
+	position: absolute;
+	top: 30%;
+	bottom: 50%;
+}
+
+#register-link:hover {
+	cursor: pointer;
 }

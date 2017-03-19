@@ -3,7 +3,7 @@ import React from 'react';
 export default class Footer extends React.Component {
 	render(){
 		return (
-			<div className="navbar navbar-default navbar-fixed-bottom">
+			<div className="footer">
 				<div id="footer-row" className="row">
 					<div className="col-sm-5 col-xs-5 col-md-5 col-lg-5 col-sm-offset-1">
 						<p id="footer-row-p">&copy; Capillary Technologies, 2017 All Rights Reserved. Privacy Policy</p>
