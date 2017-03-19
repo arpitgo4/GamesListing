@@ -8,13 +8,14 @@
 }
 
 #user-logo {
-	width: 50px;
-	height: 50px;
+	width: 40px;
+	height: 40px;
+	margin-top: 3px;
 }
 
 #user-popup-logo {
-	width: 40px;
-	height: 40px;
+	width: 30px;
+	height: 30px;
 	margin-top: 2px;
 }
 #user-logo:hover, #profile:hover, #logout:hover {

@@ -16,7 +16,7 @@ export default class UserProfile extends React.Component {
 								<div className="col-lg-4">
 									<img id="user-popup-logo" className="img-responsive" src={user_logo} />
 								</div>
-								<div style={{ marginTop: 13, fontWeight: 'bold' }} className="col-lg-7">Arpit Goyal</div>
+								<div style={{ marginTop: 8, fontWeight: 'bold' }} className="col-lg-7">Arpit Goyal</div>
 							</div>
 						</div>
 					</li>
