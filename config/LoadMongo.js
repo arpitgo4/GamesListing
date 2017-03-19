@@ -19,7 +19,9 @@ const convertToModels = (data) => {
 	const lines = splittedLines.slice(1, splittedLines.length);
 
 	const games = lines.map(line => {
-		const [ title, platform, score, genre, editors_choice ] = line.split(',');
+		const [ title, platform, score, genre, editors_choice ] = line
+																		.replace(new RegExp(`"`, 'g'), '')
+																		.split(',');
 		return new Game({ title, platform, score, genre, editors_choice });	
 	});
 	

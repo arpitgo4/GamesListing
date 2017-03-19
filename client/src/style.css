@@ -59,3 +59,11 @@ div#login-form-container {
 #register-link:hover {
 	cursor: pointer;
 }
+
+/* Game List CSS */
+tr:hover {
+	cursor: pointer;
+}
+.table {
+	border: 2px solid grey;
+}

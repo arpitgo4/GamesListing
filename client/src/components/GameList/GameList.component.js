@@ -26,7 +26,7 @@ export default class GameList extends React.Component {
 		return (
 			<div style={{ marginTop: 20 }} className="container table-responsive">
 				<div className="row">
-					<table className="table table-hover table-bordered">
+					<table className="table table-hover ">
 						<thead>
 							<th className="text-center">Title</th>
 							<th className="text-center">Platform</th>
