@@ -5,7 +5,6 @@ import Actions from '../reducers/actions';
 
 import Search from '../components/Search/Search.component';
 import GameList from '../components/GameList/GameList.component';
-import Pagination from '../components/Pagination/Pagination.component';
 
 export default class Game extends React.Component {
 
@@ -33,7 +32,6 @@ export default class Game extends React.Component {
 			<div>
 				<Search />
 				<GameList />
-				<Pagination />
 			</div>
 		);
 	}
