@@ -1,6 +1,7 @@
 import React from 'react';
-import { Link } from 'react-router';
+import { Link, browserHistory } from 'react-router';
 
+import Actions from '../../reducers/actions';
 import user_logo from '../../assets/images/user_profile.png';
 
 export default class UserProfile extends React.Component {
@@ -22,9 +23,20 @@ export default class UserProfile extends React.Component {
 					</li>
 					<li className="divider"></li>
 					<li id="profile"><Link to="">Profile</Link></li>
-					<li id="logout"><Link to="">Log Out</Link></li>
+					<li id="logout" onClick={this.logout.bind(this)}><Link to="">Log Out</Link></li>
 				</ul>
 			</div>
 		);
 	}
+
+	logout(){
+		const store = this.context.store;
+		store.dispatch({ type: Actions.DELETE_USER });
+		//browserHistory = browserHistory.splice(0, browserHistory.length);
+		browserHistory.push('/');
+	}
 }
+
+UserProfile.contextTypes = {
+	store: React.PropTypes.object
+};

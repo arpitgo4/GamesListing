@@ -28,12 +28,13 @@ router.post('/register', (req, res, next) => {
 		if(user.length > 0){
 			res.send({ msg: 'User with this username already exists!!' });
 		}else {
-			new User({ firstname, lastname, username, password }).save((err) => {
+			const user = new User({ firstname, lastname, username, password });
+			user.save((err, user) => {
 				if(err){
-					res.send({ msg: 'Error occured during registration!!' });
+					res.send({ msg: 'Error occured during registration!!', user: null });
 					return;
 				}
-				res.send({ msg: 'Registration successfull!', user: { firstname, lastname, username, password } });
+				res.send({ msg: 'Registration successfull!', user: user });
 			});
 		}
 	});

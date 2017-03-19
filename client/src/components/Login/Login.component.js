@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router';
+import { Link, browserHistory } from 'react-router';
 
 import Actions from '../../reducers/actions';
 
@@ -60,6 +60,7 @@ export default class Login extends React.Component {
 					const store = this.context.store;
 					user.jwt = token;
 					store.dispatch({ type: Actions.PUT_USER, payload: user });
+					browserHistory.push('/game-listing');
 				}
 				else this.setState({ msg });			
 			});
