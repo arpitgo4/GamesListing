@@ -24,3 +24,13 @@
 #logo {
 
 }
+
+/* Footer CSS */
+#footer-row {
+	background-color: #282A2B;
+	height: 70px;
+}
+#footer-row-p {
+	color: #808181;
+	margin-top: 20px;
+}
